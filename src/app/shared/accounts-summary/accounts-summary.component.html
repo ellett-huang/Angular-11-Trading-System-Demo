@@ -1,0 +1,38 @@
+<div class="loading-info" [hidden]="loading">
+  <h1 class="text-xs-center">Loading account's information ...</h1> 
+</div>
+<div class="accounts-summary">
+  <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+    <div class="flex-15">
+      User Name:
+    </div>
+    <div class="flex-33">
+      {{userName}}
+    </div>
+    <div class="flex-15">
+      Email Address:
+    </div>
+    <div class="flex-33">
+      {{emailAddress}}
+    </div>
+    <div class="flex-15">
+      Total Account Number:
+    </div>
+    <div class="flex-33">
+      {{totalAccountNumber}}
+    </div>
+    <div class="flex-15">
+      Total Assets Value:
+    </div>
+    <div class="flex-33">
+      {{totalAssetsValue}}
+    </div>
+    <div class="flex-15">
+      Total Positions:
+    </div>
+    <div class="flex-33">
+      {{totalPositions}}
+    </div>
+  </div>  
+</div>
+

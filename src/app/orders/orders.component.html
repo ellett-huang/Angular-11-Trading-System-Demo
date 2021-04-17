@@ -1,0 +1,49 @@
+<div class="Accounts-page">
+
+  <div class="user-info">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-12 col-md-10 offset-md-1">
+          <img [src]="profile.image" class="user-img" />
+          <h4>{{ account.username }}'s Accounts:</h4>
+          <app-follow-button
+            [hidden]="isUser"
+            [profile]="profile"
+            (toggle)="onToggleFollowing($event)">
+          </app-follow-button>
+           <a [routerLink]="['/settings']"
+              [hidden]="!isUser"
+              class="btn btn-sm btn-outline-secondary action-btn">
+              <i class="ion-gear-a"></i> Edit Profile Settings
+            </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-12 col-md-10 offset-md-1">
+        
+        <router-outlet></router-outlet>
+        <div>
+          <ag-grid-angular 
+            style="width: 600px; height: 300px;" 
+            class="ag-theme-balham"
+            [enableSorting]="true"
+            [pagination]="true"
+            [rowData]="Accounts" 
+            [columnDefs]="columnDefs"
+            [cellClicked]="onCellClicked($event)">
+          </ag-grid-angular>
+        </div>
+          
+      </div>
+
+    </div>
+  </div>
+
+</div>

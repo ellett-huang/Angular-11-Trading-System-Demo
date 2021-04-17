@@ -1,0 +1,94 @@
+<div class="order-editor-page">
+    <div class="container page">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 col-xs-12">
+  
+          <h1 class="text-xs-center">Order Detail</h1>
+  
+          <app-list-errors [errors]="errors"></app-list-errors>
+  
+          <form [formGroup]="ordersForm" (ngSubmit)="submitForm()">
+            <fieldset [disabled]="isSubmitting">
+              <div class="order-detail">
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                  <div class="flex-33">
+                    <mat-form-field>
+                      <mat-label>Symbol</mat-label>
+                      <input matInput #input maxlength="300" placeholder="Ex. fb" formControlName="symbol">
+                      <mat-hint align="start"><strong>Input Symbol</strong> </mat-hint>
+                      <mat-hint align="end">Max 20 characters {{input.value?.length || 0}}/ 20</mat-hint>
+                      <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="flex-33">
+                    <mat-form-field>
+                      <mat-label>Price</mat-label>
+                      <input matInput placeholder="Ex. 12.0" formControlName="price">
+                      <span matPrefix>$&nbsp;</span>
+                      <mat-hint align="start"><strong>Amount</strong> </mat-hint>
+                      <mat-hint align="end">Only input numbers</mat-hint>
+                      <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                  </div> 
+                  <div class="flex-33">
+                    <mat-form-field>
+                      <mat-label>Order Type</mat-label>
+                      <mat-select placeholder="Ex. Market" [formControl]="orderType">
+                          <mat-select-trigger>
+                            {{orderType.value ? orderType.value : ''}}
+                            <span *ngIf="orderType.value?.length > 1" class="example-additional-selection">
+                              (+{{orderType.value.length - 1}} others)
+                            </span>
+                          </mat-select-trigger>
+                          <mat-option *ngFor="let type of orderTypeList" [value]="type">{{type}}</mat-option>
+                      </mat-select>
+                      <mat-hint align="start"><strong>Select one Type</strong> </mat-hint>
+                      <mat-hint align="end">Select one type a time</mat-hint>
+                      <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="flex-33">
+                    <mat-form-field>
+                      <mat-label>Order Action</mat-label>
+                      <select matInput placeholder="Ex. Buy" formControlName="orderAction">
+                      <mat-select placeholder="Ex. Buy" [formControl]="orderAction">
+                          <mat-select-trigger>
+                            {{orderAction.value ? orderAction.value : ''}}
+                            <span *ngIf="orderAction.value?.length > 1" class="example-additional-selection">
+                              (+{{orderAction.value.length - 1}} others)
+                            </span>
+                          </mat-select-trigger>
+                          <mat-option *ngFor="let type of orderActionList" [value]="type">{{type}}</mat-option>
+                      </mat-select>
+                      <mat-hint align="start"><strong>Select one Action</strong> </mat-hint>
+                      <mat-hint align="end">Select one action only</mat-hint>
+                      <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                  </div> 
+                  <div class="flex-33">
+                    <mat-form-field>
+                      <mat-label>Order Size</mat-label>
+                      <input matInput placeholder="Ex. 10" formControlName="orderSize">
+                      <mat-hint align="start"><strong>Amount</strong> </mat-hint>
+                      <mat-hint align="end">Only input numbers</mat-hint>
+                      <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                  </div>                
+                </div>  
+              </div>
+              <button class="btn btn-lg btn-primary pull-xs-right"
+                type="submit">
+                Save 
+              </button>
+              &nbsp;&nbsp;
+              <button class="btn btn-outline-danger"
+              (click)="cancel()">
+                Cancel
+              </button>
+            </fieldset>
+          </form>  
+  
+        </div>
+      </div>
+    </div>
+  </div>
